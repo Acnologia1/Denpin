@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Khai bao lop battery
+    function Battery() {
+        this.setEnergy = function (energy) {
+            this.energy = energy;
+        }
+        this.getEnergy = function () {
+            return this.energy;
+        }
+        this.decreaseEnergy = function () {
+            if (this.energy > 0) {
+                this.energy--;
+            }
+        }
+    }
+    //Khai bao lop flashLamp
+    function FlashLamp (){
+        this.setBattery = function(battery){
+            this.battery = battery;
+        }
+
+        this.getBatteryInfo = function(){
+            return this.battery.getEnergy();
+        }
+        this.light = function(){
+            if (this.status)
+            {
+                alert('Light');
+            }
+            else{
+                alert('Not Light');
+            }
+        }
+        this.turnOn =function(){
+            this.status =  true;
+        }
+        this.turnOff = function(){
+            this.status = false;
+        }
+    }
+
+
+    //Sử dụng đèn pin
+    var battery = new Battery();
+    //Gán giá trị energy = 10.
+    battery.setEnergy(10);
+
+    var flashLamp = new FlashLamp();
+    //thay đổi giá trị của Pin:giá trị void.không trả về giá trị
+    flashLamp.setBattery(battery);
+    //trả về giá trị của Pin
+    document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
+    //Thông báo
+    flashLamp.light();
+
+    document.write("Turn on <br/>");
+    flashLamp.turnOn();
+    flashLamp.light();
+    document.write("Battery info:"  + flashLamp.getBatteryInfo() + "<br/>");
+
+    document.write("Turn off <br/>");
+    flashLamp.turnOff();
+    flashLamp.light();
+
+</script>
+</body>
+</html>
